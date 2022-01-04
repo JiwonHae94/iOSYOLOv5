@@ -17,6 +17,8 @@
 		7C487F8B27848B4300415EE7 /* yolov5s.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7C487F8A27848B4300415EE7 /* yolov5s.mlmodel */; };
 		7C487F9027848C1400415EE7 /* CameraHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C487F8F27848C1400415EE7 /* CameraHelper.swift */; };
 		7C487F9227848C3C00415EE7 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C487F9127848C3C00415EE7 /* CameraManager.swift */; };
+		7C487F9427848C9700415EE7 /* CameraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C487F9327848C9700415EE7 /* CameraError.swift */; };
+		7C487F9627848CB100415EE7 /* FrameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C487F9527848CB100415EE7 /* FrameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		7C487F8A27848B4300415EE7 /* yolov5s.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = yolov5s.mlmodel; path = ../../../../MLProject/Yolo/yolov5/yolov5s.mlmodel; sourceTree = "<group>"; };
 		7C487F8F27848C1400415EE7 /* CameraHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHelper.swift; sourceTree = "<group>"; };
 		7C487F9127848C3C00415EE7 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		7C487F9327848C9700415EE7 /* CameraError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraError.swift; sourceTree = "<group>"; };
+		7C487F9527848CB100415EE7 /* FrameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,8 @@
 			children = (
 				7C487F8F27848C1400415EE7 /* CameraHelper.swift */,
 				7C487F9127848C3C00415EE7 /* CameraManager.swift */,
+				7C487F9327848C9700415EE7 /* CameraError.swift */,
+				7C487F9527848CB100415EE7 /* FrameManager.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -311,6 +317,8 @@
 				7C487F9027848C1400415EE7 /* CameraHelper.swift in Sources */,
 				7C487F5B27848B0700415EE7 /* iOSYOLOv5App.swift in Sources */,
 				7C487F9227848C3C00415EE7 /* CameraManager.swift in Sources */,
+				7C487F9627848CB100415EE7 /* FrameManager.swift in Sources */,
+				7C487F9427848C9700415EE7 /* CameraError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
