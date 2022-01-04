@@ -7,42 +7,24 @@
 
 import SwiftUI
 
-class ContentViewModel : ObservableObject{
-    @Published var frame : CGImage?
-    @Published var error : CameraError?
+struct ContentView: View {
+    @EnvironmentObject var model:  CameraViewModel
     
-    var comicFilter = false
-    var monoFilter = false
-    var crystalFilter = false
-    var currentLensFacing = false
-    
-    private let cameraManager = CameraManager.shared
-    private let frameManager = FrameManager.shared
-    
-    
-    init() {
-        setupSubscriptions()
-    }
-    
-    func setupSubscriptions() {
-        cameraManager.$error
-            .receive(on: RunLoop.main)
-            .map { $0 }
-            .assign(to: &$error)
-        
-        frameManager.$current
-            // receive frame on main thread
-            .receive(on: RunLoop.main)
-            .compactMap { buffer in
-                // convert buffer to CGImage for display
-                return CGImage.create(from: buffer)
-            }
-            .assign(to: &$frame)
-    }
-    
-    func switchCamera(){
-        currentLensFacing.toggle()
-        cameraManager.switchCamera()
+    var body: some View {
+        ZStack {
+            
+            FrameView(image: model.frame)
+                .edgesIgnoringSafeArea(.all)
+            ErrorView(error: model.error)
+            
+            CameraToggle()
+            
+        }
     }
 }
 
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

@@ -35,9 +35,7 @@ extension FrameManager: AVCaptureVideoDataOutputSampleBufferDelegate{
         if let buffer = sampleBuffer.imageBuffer{
             DispatchQueue.main.async {
                 self.current = buffer
-                if let currentBuffer = buffer{
-                    YOLOv5.shared.detect(imageBuffer: currentBuffer)
-                }
+                YOLOv5.shared.detect(imageBuffer: buffer)
             }
         }
     }

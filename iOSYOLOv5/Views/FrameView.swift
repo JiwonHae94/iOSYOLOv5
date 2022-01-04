@@ -19,7 +19,7 @@ struct FrameView: View {
             GeometryReader { geometry in
                 
                 Image(image, scale: 1.0, orientation:
-                        viewModel.currentLensFacing ? .upMirrored : .rightMirrored, label: label)
+                        viewModel.currentLensFacing ? .upMirrored : .upMirrored, label: label)
                     .resizable()
                     .scaledToFill()
                     .frame(

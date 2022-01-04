@@ -11,8 +11,8 @@ struct MlView: View {
     @EnvironmentObject var viewmodel : CameraViewModel
     
     var body: some View {
-        VStack{
-            Text(viewmodel.$objectClassified)
+        ZStack{
+            
         }
     }
 }
