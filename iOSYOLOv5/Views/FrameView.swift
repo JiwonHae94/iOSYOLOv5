@@ -18,8 +18,7 @@ struct FrameView: View {
         if let image = image {
             GeometryReader { geometry in
                 
-                Image(image, scale: 1.0, orientation:
-                        viewModel.currentLensFacing ? .upMirrored : .upMirrored, label: label)
+                Image(image, scale: 1.0, label: label)
                     .resizable()
                     .scaledToFill()
                     .frame(

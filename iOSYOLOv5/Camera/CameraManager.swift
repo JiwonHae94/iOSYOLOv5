@@ -14,6 +14,7 @@ class CameraManager : ObservableObject{
     @Published var error : CameraError?
     
     private var currentPosition = AVCaptureDevice.Position.front
+    private var currentOrientation = AVCaptureVideoOrientation.portrait
     
     enum Status{
         case unconfigured
@@ -123,10 +124,9 @@ class CameraManager : ObservableObject{
                 videoOutput.videoSettings =  [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
                 
                 let videoConnection = videoOutput.connection(with: .video)
-                videoConnection?.videoOrientation = .portrait
+                videoConnection?.videoOrientation = currentOrientation
             }else{
                 set(error: .CannotAddOutput)
-                print(error)
                 status = .failed
                 return
             }

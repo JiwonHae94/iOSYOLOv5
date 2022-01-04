@@ -10,8 +10,8 @@ import CoreML
 import Vision
 import SwiftUI
 
-class YOLOv5 : ObservableObject {
-    static let shared = YOLOv5()
+class YOLOv3 : ObservableObject {
+    static let shared = YOLOv3()
     
     private let modelFile = try! YOLOv3TinyInt8LUT(configuration: MLModelConfiguration())
     private let model : VNCoreMLModel
@@ -68,7 +68,7 @@ class YOLOv5 : ObservableObject {
             recognizedObjects.append(Detection(label: firstLabel, confidence: observation.confidence, boundingBox: observation.boundingBox))
         }
         
-        print("ml recognized objects : \(recognizedObjects.count)")
+        objectDetected = recognizedObjects
     }
 
     private func processClassificationObservations(_ results: [VNClassificationObservation]) {

@@ -8,7 +8,8 @@
 import Foundation
 import Vision
 
-class Detection {
+class Detection : Identifiable {
+    var id = UUID()
     var label : String
     var confidence : Float
     var boundingBox : CGRect

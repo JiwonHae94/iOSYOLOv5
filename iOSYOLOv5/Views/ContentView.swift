@@ -15,6 +15,9 @@ struct ContentView: View {
             
             FrameView(image: model.frame)
                 .edgesIgnoringSafeArea(.all)
+            
+            MlView()
+            
             ErrorView(error: model.error)
             
             CameraToggle()
