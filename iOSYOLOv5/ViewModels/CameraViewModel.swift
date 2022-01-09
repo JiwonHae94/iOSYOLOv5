@@ -7,13 +7,14 @@
 
 import Foundation
 import AVFoundation
+import Vision
 import CoreML
 
 class CameraViewModel : ObservableObject{
     @Published var frame : CGImage?
     @Published var error : CameraError?
-    @Published var objectClassified : Classification?
-    @Published var objectdDetected : [Detection] = []
+    @Published var objectClassified : [VNClassificationObservation] = []
+    @Published var objectdDetected : [VNDetectedObjectObservation] = []
     
     var comicFilter = false
     var monoFilter = false

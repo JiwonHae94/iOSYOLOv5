@@ -131,6 +131,9 @@ class CameraManager : ObservableObject{
                 return
             }
             
+            // set resolution
+            session.sessionPreset = .vga640x480
+            
             // configuration made
             status = .configured
             

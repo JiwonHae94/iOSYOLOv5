@@ -12,16 +12,12 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            
-            FrameView(image: model.frame)
-                .edgesIgnoringSafeArea(.all)
-            
-            MlView()
+            FrameView(image: model.frame).edgesIgnoringSafeArea(.all)
             
             ErrorView(error: model.error)
-            
+
             CameraToggle()
-            
+
         }
     }
 }

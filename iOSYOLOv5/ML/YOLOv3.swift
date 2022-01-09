@@ -1,8 +1,8 @@
 //
-//  YOLOv5.swift
+//  Yolov3.swift
 //  iOSYOLOv5
 //
-//  Created by Jiwon_Hae on 2022/01/04.
+//  Created by Jiwon_Hae on 2022/01/10.
 //
 
 import Foundation
@@ -18,8 +18,8 @@ class YOLOv3 : ObservableObject {
     
     private var cropAndScaleOption: VNImageCropAndScaleOption = .scaleFit
     
-    @Published var objectDetected : [Detection] = []
-    @Published var objectClassified : Classification? = nil
+    @Published var objectDetected : [VNDetectedObjectObservation] = []
+    @Published var objectClassified : [VNClassificationObservation] = []
     
     init(){
         self.model = try! VNCoreMLModel(for: modelFile.model)
@@ -37,10 +37,10 @@ class YOLOv3 : ObservableObject {
                 return
             }
             
-            if let results = request.results as? [VNClassificationObservation]{
-                self.processClassificationObservations(results)
-            }else if #available(iOS 12.0, *), let results = request.results as? [VNRecognizedObjectObservation] {
+            if #available(iOS 12.0, *), let results = request.results as? [VNRecognizedObjectObservation] {
                 self.processObjectDetectionObservations(results)
+            } else if let results = request.results as? [VNClassificationObservation]  {
+                self.processClassificationObservations(results)
             }
         }
         
@@ -57,24 +57,15 @@ class YOLOv3 : ObservableObject {
     
     @available(iOS 12.0, *)
     private func processObjectDetectionObservations(_ results: [VNRecognizedObjectObservation]) {
-        var recognizedObjects = [Detection]()
-        for i in 0..<results.count{
-            let observation = results[i]
-            
-            guard let firstLabel = observation.labels.first?.identifier else {
-                continue
-            }
-            
-            recognizedObjects.append(Detection(label: firstLabel, confidence: observation.confidence, boundingBox: observation.boundingBox))
-        }
+        objectDetected = results
+        processRecognitionObservation(results as? [VNRecognizedObjectObservation])
+    }
+    
+    private func processRecognitionObservation(_ results : [VNRecognizedObjectObservation]){
         
-        objectDetected = recognizedObjects
     }
 
     private func processClassificationObservations(_ results: [VNClassificationObservation]) {
-        if let _objectClassified = results.first {
-            objectClassified = Classification(label: _objectClassified.identifier, confidence: String(format: "%.2f", _objectClassified.confidence * 100))
-            print("ml classified objects : \(_objectClassified.identifier)")
-        }
+        objectClassified = results
     }
 }
